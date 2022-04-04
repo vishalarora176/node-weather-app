@@ -49,7 +49,6 @@ app.get('/weather', (req, res) => {
     } else {
         geocode(req.query.address, ({lat, long, location} = {}, error) => {
             if (error) {
-                // return console.log(error)
                 return res.send({ error })
             }
             forecast(lat, long, (forecastResponse, error) => {
@@ -62,7 +61,6 @@ app.get('/weather', (req, res) => {
                     location: location,
                     address: req.query.address
                 })
-                // console.log(chalk.yellow(`The weather in ${location} is ${forecastResponse.data.weather[0].description} and current temperature is ${forecastResponse.data.main.temp}`))
             })
         }); 
     }
